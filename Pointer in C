@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <conio.h>
+void Update(int *,int *);
+
+int main()
+{
+    int First_Num,*Point_Firstnum,Second_Num,*Point_SecondNum;
+    Point_Firstnum = &First_Num;   // Get the address of First_Num
+    Point_SecondNum = &Second_Num; // Get the address of Second_Num
+    printf("Enter the first number : ");
+    scanf("%d",&First_Num);        /* First_Num and Point_Firstnum have the same address so anything you
+                                    input the value may enter also to Point_Firstnum*/
+    printf("Enter the second number : ");
+    scanf("%d",&Second_Num);       /* Second_Num and Point_Secondnum have the same address so anything you
+                                    input the value may enter also to Point_Secondnum*/
+
+    Update(Point_Firstnum,Point_SecondNum); // modify the First_Num and Second_Num
+
+
+    return 0;
+}
+void Update(int *Point_Firstnum,int *Point_SecondNum)
+{
+    int temp;
+    temp = *Point_Firstnum;
+    *Point_Firstnum += *Point_SecondNum;    // just like a = a +b
+    *Point_SecondNum -=temp;                // just like b =a-b
+
+    printf("\nAddition : %d\n",*Point_Firstnum);
+    printf("Subtraction(Absolute value) : %d",abs(*Point_SecondNum)); // i use absolute value to avoid the output become negative
+    getch();
+}
